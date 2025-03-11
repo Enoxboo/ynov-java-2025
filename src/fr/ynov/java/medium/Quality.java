@@ -1,5 +1,7 @@
 package fr.ynov.java.medium;
 
+import java.util.Objects;
+
 public class Quality {
     private final int id;
     private final String name;
@@ -8,6 +10,19 @@ public class Quality {
     public Quality(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Quality obj2) {
+            return id == obj2.id && Objects.equals(name, obj2.name);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return id + name.hashCode();
     }
 
     public static void main(String[] args) {
