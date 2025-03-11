@@ -1,4 +1,4 @@
-package fr.ynov.java.easy;
+package fr.ynov.java.easy.easy;
 
 public class Arrays {
     public static void main(String[] args) {

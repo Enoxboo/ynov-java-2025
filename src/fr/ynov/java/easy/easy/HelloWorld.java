@@ -1,4 +1,4 @@
-package fr.ynov.java.easy;
+package fr.ynov.java.easy.easy;
 
 public class HelloWorld {
 
