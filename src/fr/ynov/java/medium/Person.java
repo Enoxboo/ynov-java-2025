@@ -1,23 +1,28 @@
 package fr.ynov.java.medium;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Date;
+
 public class Person {
 
-    enum Nationality {
+    private enum Nationality {
         FRANCE,
         JAPAN,
         ITALY
     }
 
     private final String name;
-    private final int age;
+    private final Date birthDate;
     private final String gender;
     private final float height;
     private final float weight;
     private final Nationality nationality;
 
-    public Person(String name, int age, String gender, float height, float weight, Nationality nationality) {
+    Person(String name, Date birthDate, String gender, float height, float weight, Nationality nationality) {
         this.name = name;
-        this.age = age;
+        this.birthDate = birthDate;
         this.gender = gender;
         this.height = height;
         this.weight = weight;
@@ -26,16 +31,26 @@ public class Person {
 
     public void printDetails() {
         System.out.println("Name: " + name);
-        System.out.println("Age: " + age);
+        System.out.println("Birth Date: " + birthDate);
+        System.out.println("Age: " + getAge());
         System.out.println("Gender: " + gender);
-        System.out.println("Height: " + height);
-        System.out.println("Weight: " + weight);
+        System.out.println("Height: " + height + " cm");
+        System.out.println("Weight: " + weight + " kg");
         System.out.println("Nationality: " + nationality);
     }
 
-    //Example of a person
+    public int getAge() {
+        LocalDate birthLocalDate = birthDate.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+        return Period.between(birthLocalDate, LocalDate.now()).getYears();
+    }
+
+    // Example of a person
     public static void main(String[] args) {
-        Person person = new Person("John Doe", 30, "Male", 180f, 70f, Person.Nationality.FRANCE);
+        // Create a date for January 2, 1997
+        Date birthDate = new Date(97, 0, 2);
+        Person person = new Person("John Doe", birthDate, "Male", 180f, 70f, Nationality.FRANCE);
         person.printDetails();
     }
 }
