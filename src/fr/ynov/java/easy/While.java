@@ -1,4 +1,4 @@
-package fr.ynov.java.easy.easy;
+package fr.ynov.java.easy;
 
 public class While {
     public static void main(String[] args) {
