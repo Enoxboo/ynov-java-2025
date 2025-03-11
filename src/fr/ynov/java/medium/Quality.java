@@ -4,6 +4,7 @@ public class Quality {
     private final int id;
     private final String name;
 
+    //Quality constructor
     public Quality(int id, String name) {
         this.id = id;
         this.name = name;
