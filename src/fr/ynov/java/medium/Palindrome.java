@@ -21,6 +21,12 @@ public class Palindrome {
         int right = word.length() - 1;
 
         while (left < right) {
+            if (word.charAt(left) == ' ') {
+                left++;
+            }
+            if (word.charAt(right) == ' ') {
+                right--;
+            }
             if (word.charAt(left) != word.charAt(right)) {
                 return false;
             }
