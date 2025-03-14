@@ -7,23 +7,12 @@ public class WritingFile {
         String inputFilePath = "src/resources/input.txt";
         String outputFilePath = "src/resources/output.txt";
 
-        createInputFile(inputFilePath);
-
         transferContent(inputFilePath, outputFilePath);
 
         System.out.println("File transfer completed successfully!");
     }
 
-    private static void createInputFile(String filePath) {
-        try (FileWriter writer = new FileWriter(filePath)) {
-            writer.write("Hello World !");
 
-            System.out.println("Input file created successfully at: " + filePath);
-        } catch (IOException e) {
-            System.err.println("Error creating input file: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
 
     private static void transferContent(String inputPath, String outputPath) {
         try (BufferedReader reader = new BufferedReader(new FileReader(inputPath));
